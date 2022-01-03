@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">You Are Healing! Let's Write Down How You Feel :)</h1>
+
+    <form asp-controller="Home" asp-action="AddNoteView">
+
+        <input class="btn btn-success" value="How do You Feel :)"
+               type="submit"/>
+
+    </form>
+</div>
