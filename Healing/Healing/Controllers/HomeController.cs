@@ -28,6 +28,14 @@ namespace Healing.Controllers
             return View();
         }
 
+        public IActionResult AddNoteToDB(Note note)
+        {
+            note.DateTime = DateTime.Now;
+            Console.WriteLine($"Date: {note.DateTime.ToString("f")}, note: {note.Expression}");
+
+            return RedirectToAction("Index", "Home");
+        }
+
         public IActionResult Privacy()
         {
             return View();

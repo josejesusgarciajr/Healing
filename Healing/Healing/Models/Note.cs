@@ -4,6 +4,11 @@ namespace Healing.Models
     public class Note
     {
         /*
+         * Stamp Note with DateTime
+         */
+        public DateTime DateTime { get; set; }
+
+        /*
          * How You are Feeling
          * These are the bad symptoms
          */ 

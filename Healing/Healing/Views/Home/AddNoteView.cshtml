@@ -3,8 +3,39 @@
     ViewData["Title"] = "Add Note: You are Healing!";
 }
 
+<div class="text-center">
+    <h1 class="display-4">Add a not about how you Feel</h1>
+</div>
+
 <div class="container">
     <form asp-controller="Home" asp-action="AddNoteToDB">
 
+        <label class="lead">How is Your Anxiety?</label>
+        <input type="number" step="0.01" asp-for="Anxiety"
+               class="form-control"/>
+
+        <label class="lead">How is Your Uneasyness?</label>
+        <input type="number" step="0.01" asp-for="Uneasyness"
+               class="form-control"/>
+
+        <label class="lead">How is Your Heavyness?</label>
+        <input type="number" step="0.01" asp-for="Heavyness"
+               class="form-control"/>
+
+        <label class="lead">How Happy do you feel?</label>
+        <input type="number" step="0.01" asp-for="Happyness"
+               class="form-control"/>
+
+        <label class="lead">How excited are you for the day?</label>
+        <input type="number" step="0.01"asp-for="Excitement"
+               class="form-control"/>
+
+        <!-- Expression -->
+        <label class="lead">Express how you feel right now:</label>
+        <textarea asp-for="Expression" class="form-control"></textarea>
+        <br />
+
+        <!-- submit button -->
+        <input type="submit" class="btn btn-success"/>
     </form>
 </div>
