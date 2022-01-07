@@ -4,9 +4,15 @@ namespace Healing.Models
     public class Note
     {
         /*
+         * ID to identify each Note
+         */
+        public int ID { get; set; }
+
+        /*
          * Stamp Note with DateTime
          */
         public DateTime DateTime { get; set; }
+        public string DateString { get; set; }
 
         /*
          * How You are Feeling
@@ -35,15 +41,37 @@ namespace Healing.Models
 
         public Note() { }
 
-        public Note(double anxiety, double uneasyness, double heavyness,
+        public Note(int id, string dateString, double anxiety, double uneasyness, double heavyness,
             double happyness, double excitement, string expression)
         {
+            ID = id;
+            DateString = dateString;
             Anxiety = anxiety;
             Uneasyness = uneasyness;
             Heavyness = heavyness;
             Happyness = happyness;
             Excitement = excitement;
             Expression = expression;
+        }
+
+        public void CleanUpApostrophe()
+        {
+            string cleanUp = "";
+
+            int index = 0;
+
+            while(index < Expression.Length)
+            {
+                if(Expression[index] == '\'')
+                {
+                    cleanUp += Expression[index] + "'";
+                } else
+                {
+                    cleanUp += Expression[index];
+                }
+                index++;
+            }
+            Expression = cleanUp;
         }
     }
 }

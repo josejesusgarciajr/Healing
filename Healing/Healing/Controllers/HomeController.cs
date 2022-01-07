@@ -23,6 +23,14 @@ namespace Healing.Controllers
             return View();
         }
 
+        public IActionResult DisplayProgress()
+        {
+            QueryDB queryDB = new QueryDB();
+            List<Note> notes = queryDB.GetNotes();
+
+            return View(notes);
+        }
+
         public IActionResult AddNoteView()
         {
             return View();
@@ -32,6 +40,9 @@ namespace Healing.Controllers
         {
             note.DateTime = DateTime.Now;
             Console.WriteLine($"Date: {note.DateTime.ToString("f")}, note: {note.Expression}");
+
+            QueryDB queryDB = new QueryDB();
+            queryDB.AddNoteToDB(note);
 
             return RedirectToAction("Index", "Home");
         }

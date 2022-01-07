@@ -29,3 +29,13 @@ VALUES
 INSERT INTO Note
 VALUES
 ('Wednesday, January 5, 2022 12:55 PM', 2, 3, 30, 45, 25, 'Woke up feeling alright. The heavyness is not so bad. Baby steps. You are going to make it a good day.');
+
+INSERT INTO Note
+VALUES
+('Wednesday, January 6, 2022 10:10 AM', 2, 5, 65, 0, 0,
+ 'Had a bad dream about my boss getting upset with me. Woke up feeling extreemly anxious and the heavyness was horrible. Went back to sleep to have another bad dream. Woke up feeling a tiny bit better but I was still shoken from the first dream.');
+
+INSERT INTO Note 
+VALUES 
+('Thursday, January 6, 2022 4:42 PM', 1, 2, 30, 35, 35,
+  'I was feeling really heavy, but then after taking the pills, drinking a tumeric, and looking at the pictures from Hawaii I felt happier. I realized my girlfriend is mine. That she\'s the same girl from Hawaii. And she\'s Mine :)');
