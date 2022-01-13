@@ -52,15 +52,30 @@ namespace Healing.Models
              */
             note.CleanUpApostrophe();
 
-            using (SqlConnection sqlConnection = new SqlConnection(CS))
+            string query = "";
+            if(note.DateString != null)
             {
                 // query
-                string query = "INSERT INTO Note"
+                query = "INSERT INTO Note"
+                    + " VALUES"
+                    + $" ('{note.DateString}',"
+                    + $" {note.Anxiety}, {note.Uneasyness}, {note.Heavyness},"
+                    + $" {note.Happyness}, {note.Excitement}, "
+                    + $" '{note.Expression}'); ";
+            } else
+            {
+                // query
+                query = "INSERT INTO Note"
                     + " VALUES"
                     + $" ('{note.DateTime.ToString("f")}',"
                     + $" {note.Anxiety}, {note.Uneasyness}, {note.Heavyness},"
                     + $" {note.Happyness}, {note.Excitement}, "
                     + $" '{note.Expression}'); ";
+            }
+
+            using (SqlConnection sqlConnection = new SqlConnection(CS))
+            {
+                
                 Console.WriteLine($"Query: {query}");
                 SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
 

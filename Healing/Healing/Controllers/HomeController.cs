@@ -36,13 +36,28 @@ namespace Healing.Controllers
             return View();
         }
 
+        public IActionResult AddOldNote()
+        {
+            return View();
+        }
+
         public IActionResult AddNoteToDB(Note note)
         {
-            note.DateTime = DateTime.Now;
-            Console.WriteLine($"Date: {note.DateTime.ToString("f")}, note: {note.Expression}");
+            if(note.DateString != null)
+            {
+                Console.WriteLine($"Note Date: {note.DateString}");
 
-            QueryDB queryDB = new QueryDB();
-            queryDB.AddNoteToDB(note);
+                QueryDB queryDB = new QueryDB();
+                queryDB.AddNoteToDB(note);
+            } else
+            {
+                note.DateTime = DateTime.Now;
+                Console.WriteLine($"Date: {note.DateTime.ToString("f")}, note: {note.Expression}");
+
+                QueryDB queryDB = new QueryDB();
+                queryDB.AddNoteToDB(note);
+            }
+
 
             return RedirectToAction("Index", "Home");
         }

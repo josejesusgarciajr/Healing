@@ -5,10 +5,25 @@
 <div class="text-center">
     <h1 class="display-4">You Are Healing! Let's Write Down How You Feel :)</h1>
 
-    <form asp-controller="Home" asp-action="AddNoteView">
+    <div class="container">
 
-        <input class="btn btn-success" value="How do You Feel :)"
-               type="submit"/>
+        <div class="row">
 
-    </form>
+            <form asp-controller="Home" asp-action="AddNoteView" class="col-6">
+
+                <input class="btn btn-success" value="How do You Feel Right Now :)"
+                       type="submit" />
+
+            </form>
+
+            <form asp-controller="Home" asp-action="AddOldNote" class=" col-6">
+
+                <input class="btn btn-success" value="Add an old Note :)"
+                       type="submit" />
+
+            </form>
+
+        </div>
+
+    </div>
 </div>
