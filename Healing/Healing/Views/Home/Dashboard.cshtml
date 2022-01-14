@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Dashboard</h1>
+</div>
+
+<div class="container">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Date Time Stamp</th>
+                <th scope="col">Anxiety</th>
+                <th scope="col">Uneasyness</th>
+                <th scope="col">HeavyNess</th>
+                <th scope="col">Happyness</th>
+                <th scope="col">Excitement</th>
+                <th scope="col">Manage</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Note note in Model)
+            {
+                <tr>
+                    <th scope="row">@note.DateString</th>
+                    <td>@note.Anxiety</td>
+                    <td>@note.Uneasyness</td>
+                    <td>@note.Heavyness</td>
+                    <td>@note.Happyness</td>
+                    <td>@note.Excitement</td>
+                    <td>
+                        <form asp-controller="Home" asp-action="EditNoteView" asp-route-id="@note.ID">
+                            <input type="submit" value="Edit" class="btn btn-info"/>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

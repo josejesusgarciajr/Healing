@@ -13,6 +13,37 @@ namespace Healing.Models
             CS = "Server=localhost;Database=Healing;User Id=SA;Password=myPassw0rd;";
         }
 
+        public Note GetNote(int id)
+        {
+            Note note = new Note();
+            // establish sql connection
+            using(SqlConnection sqlConnection = new SqlConnection(CS))
+            {
+                // query
+                string query = "SELECT * FROM Note"
+                    + $" WHERE ID = {id};";
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+
+                // open sql connection
+                sqlConnection.Open();
+
+                using(SqlDataReader reader = sqlCommand.ExecuteReader())
+                {
+                    while(reader.Read())
+                    {
+                        note = new Note((int)reader[0], (string)reader[1], (double)reader[2],
+                            (double)reader[3], (double)reader[4], (double)reader[5], (double)reader[6],
+                            (string)reader[7]);
+                    }
+                }
+
+                // close sql connection
+                sqlConnection.Close();
+            }
+
+            return note;
+        }
+
         public List<Note> GetNotes()
         {
             List<Note> notes = new List<Note>();
@@ -83,6 +114,29 @@ namespace Healing.Models
                 sqlConnection.Open();
 
                 // add note to db
+                sqlCommand.ExecuteNonQuery();
+
+                // close sql connection
+                sqlConnection.Close();
+            }
+        }
+
+        public void EditNote(Note note)
+        {
+            // establish sql connection
+            using(SqlConnection sqlConnection = new SqlConnection(CS))
+            {
+                // query
+                string query = "UPDATE Note"
+                    + $" SET DateTimeStamp = '{note.DateString}', Anxiety = {note.Anxiety}, Uneasyness = {note.Uneasyness},"
+                    + $" Happyness = {note.Happyness}, Excited = {note.Excitement}, Expression = '{note.Expression}'"
+                    + $" WHERE ID = {note.ID};";
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+
+                // open sql connection
+                sqlConnection.Open();
+
+                // update db
                 sqlCommand.ExecuteNonQuery();
 
                 // close sql connection

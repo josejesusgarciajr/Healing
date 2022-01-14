@@ -1,0 +1,51 @@
+﻿@model Note;
+@{
+    ViewData["Title"] = "Edit Note";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Edit Note</h1>
+</div>
+
+<div class="container">
+
+    <form asp-controller="Home" asp-action="EditDBNote">
+
+        <!-- ID -->
+        <input type="hidden" asp-for="ID" value="@Model.ID" />
+        
+        <!-- DATE/TIME -->
+        <label>Date Time Format: <code>Saturday, January 1, 2022 4:13 PM</code></label>
+        <input type="text" asp-for="DateString"
+               class="form-control" value="@Model.DateString"/>
+
+        <label class="lead">How was your Anxiety?</label>
+        <input type="number" step="0.01" asp-for="Anxiety"
+               class="form-control" value="@Model.Anxiety"/>
+
+        <label class="lead">How was your Uneasyness?</label>
+        <input type="number" step="0.01" asp-for="Uneasyness"
+               class="form-control" value="@Model.Uneasyness"/>
+
+        <label class="lead">How was your Heavyness?</label>
+        <input type="number" step="0.01" asp-for="Heavyness"
+               class="form-control" value="@Model.Heavyness"/>
+
+        <label class="lead">How Happy did you feel?</label>
+        <input type="number" step="0.01" asp-for="Happyness"
+               class="form-control" value="@Model.Happyness"/>
+
+        <label class="lead">How excited were you for the day?</label>
+        <input type="number" step="0.01" asp-for="Excitement"
+               class="form-control" value="@Model.Excitement"/>
+
+        <!-- Expression -->
+        <label class="lead">Express how did you feel at that moment?:</label>
+        <textarea asp-for="Expression" class="form-control">@Model.Expression</textarea>
+        <br />
+
+        <!-- submit button -->
+        <input type="submit" class="btn btn-success" />
+    </form>
+
+</div>

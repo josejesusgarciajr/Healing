@@ -41,6 +41,30 @@ namespace Healing.Controllers
             return View();
         }
 
+        public IActionResult EditNoteView(int id)
+        {
+            QueryDB queryDB = new QueryDB();
+            Note note = queryDB.GetNote(id);
+
+            return View(note);
+        }
+
+        public IActionResult EditDBNote(Note note)
+        {
+            QueryDB queryDB = new QueryDB();
+            queryDB.EditNote(note);
+
+            return RedirectToAction("Dashboard", "Home");
+        }
+
+        public IActionResult Dashboard()
+        {
+            QueryDB queryDB = new QueryDB();
+            List<Note> notes = queryDB.GetNotes();
+
+            return View(notes);
+        }
+
         public IActionResult AddNoteToDB(Note note)
         {
             if(note.DateString != null)
