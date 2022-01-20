@@ -13,6 +13,23 @@ namespace Healing.Models
             CS = "Server=localhost;Database=Healing;User Id=SA;Password=myPassw0rd;";
         }
 
+        private bool IsValid()
+        {
+            bool state = false;
+
+            List<string> sqlInjections = new List<string>();
+
+            sqlInjections.Add("-");
+            sqlInjections.Add("--");
+            sqlInjections.Add("LIKE");
+            sqlInjections.Add(";");
+            sqlInjections.Add("SELECT");
+            sqlInjections.Add("*");
+            sqlInjections.Add("FROM");
+
+            return state;
+        }
+
         public Note GetNote(int id)
         {
             Note note = new Note();
