@@ -17,7 +17,7 @@
         <!-- DATE/TIME -->
         <label>Date Time Format: <code>Saturday, January 1, 2022 4:13 PM</code></label>
         <input type="text" asp-for="DateString"
-               class="form-control" value="@Model.DateString"/>
+               class="form-control" value="@Model.DateTime.ToString("f")"/>
 
         <label class="lead">How was your Anxiety?</label>
         <input type="number" step="0.01" asp-for="Anxiety"

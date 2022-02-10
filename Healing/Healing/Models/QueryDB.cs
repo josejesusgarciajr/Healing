@@ -48,7 +48,11 @@ namespace Healing.Models
                 {
                     while(reader.Read())
                     {
-                        note = new Note((int)reader[0], (DateTime)reader[1], (double)reader[2],
+                        // cast string to DateTime
+                        DateTime dateTime = DateTime.Parse((string)reader[1],
+                          System.Globalization.CultureInfo.InvariantCulture);
+
+                        note = new Note((int)reader[0], dateTime, (double)reader[2],
                             (double)reader[3], (double)reader[4], (double)reader[5], (double)reader[6],
                             (string)reader[7]);
                     }

@@ -66,6 +66,8 @@ namespace Healing.Controllers
             QueryDB queryDB = new QueryDB();
             List<Note> notes = queryDB.GetNotes();
 
+            // sort notes by date
+            notes.Sort((a, b) => DateTime.Compare(a.DateTime, b.DateTime));
             return View(notes);
         }
 
