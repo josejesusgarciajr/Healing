@@ -25,7 +25,7 @@
             @foreach(Note note in Model)
             {
                 <tr>
-                    <th scope="row">@note.DateString</th>
+                    <th scope="row">@note.DateTime.ToString("f")</th>
                     <td>@note.Anxiety</td>
                     <td>@note.Uneasyness</td>
                     <td>@note.Heavyness</td>

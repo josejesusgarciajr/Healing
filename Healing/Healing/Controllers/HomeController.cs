@@ -29,7 +29,7 @@ namespace Healing.Controllers
             List<Note> notes = queryDB.GetNotes();
 
             // SORT THE NOTES BY DATE
-            notes.Sort((x, y) => String.Compare(x.DateString, y.DateString));
+            notes.Sort((x, y) => DateTime.Compare(x.DateTime, y.DateTime));
 
             return View(notes);
         }
@@ -55,6 +55,7 @@ namespace Healing.Controllers
         public IActionResult EditDBNote(Note note)
         {
             QueryDB queryDB = new QueryDB();
+            //note.DateString = note.CleanUpApostrophe();
             queryDB.EditNote(note);
 
             return RedirectToAction("Dashboard", "Home");

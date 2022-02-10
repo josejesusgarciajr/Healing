@@ -41,11 +41,12 @@ namespace Healing.Models
 
         public Note() { }
 
-        public Note(int id, string dateString, double anxiety, double uneasyness, double heavyness,
+        public Note(int id, DateTime dateTime, double anxiety, double uneasyness, double heavyness,
             double happyness, double excitement, string expression)
         {
             ID = id;
-            DateString = dateString;
+            //DateString = dateString;
+            DateTime = dateTime;
             Anxiety = anxiety;
             Uneasyness = uneasyness;
             Heavyness = heavyness;
