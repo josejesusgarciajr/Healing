@@ -130,9 +130,7 @@ namespace Healing.Models
             }
 
             using (SqlConnection sqlConnection = new SqlConnection(CS))
-            {
-                
-                Console.WriteLine($"Query: {query}");
+            {               
                 SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
 
                 // open sql connection
@@ -151,6 +149,7 @@ namespace Healing.Models
             // establish sql connection
             using(SqlConnection sqlConnection = new SqlConnection(CS))
             {
+                note.CleanUpApostrophe();
                 // query
                 string query = "UPDATE Note"
                     + $" SET DateTimeStamp = '{note.DateString}', Anxiety = {note.Anxiety}, Uneasyness = {note.Uneasyness},"
